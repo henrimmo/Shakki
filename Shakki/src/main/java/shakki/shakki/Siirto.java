@@ -29,7 +29,7 @@ public class Siirto {
     }
     
     public void siirry() {
-        kohde = alku;
+
     }
     
     

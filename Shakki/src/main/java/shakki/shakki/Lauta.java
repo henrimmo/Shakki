@@ -6,6 +6,7 @@
 
 package shakki.shakki;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,9 +16,18 @@ import java.util.Map;
 public class Lauta {
     
     
-    private Map<Nappula, Ruutu> sijainnit;
+    private final Map<Ruutu, Nappula> sijainnit;
     
     public Lauta() {
-        
+        this.sijainnit = new HashMap<Ruutu, Nappula>();
     }
+    
+    public void asetaNappula(Ruutu ruutu, Nappula nappula) {
+        if (ruutu != null && nappula != null) {
+            sijainnit.put(ruutu, nappula);
+        }
+    }
+    
+
 }
+

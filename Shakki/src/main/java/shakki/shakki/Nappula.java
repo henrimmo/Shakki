@@ -14,11 +14,16 @@ public class Nappula {
     
     private int x;
     private int y;
+    private Tyyppi tyyppi;
+    private Vari väri;
     
     
-    public Nappula(int x, int y) {
+    
+    public Nappula(int x, int y, Tyyppi tyypi, Vari väri) {
         this.x = x;
         this.y = y;
+        this.tyyppi = tyyppi;
+        
     }
     
     public int getX() {
