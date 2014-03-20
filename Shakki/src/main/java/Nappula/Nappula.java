@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-package shakki.shakki;
+package Nappula;
+
 
 /**
  *
@@ -15,14 +16,15 @@ public class Nappula {
     private int x;
     private int y;
     private Tyyppi tyyppi;
-    private Vari väri;
+    private Vari vari;
     
     
     
-    public Nappula(int x, int y, Tyyppi tyypi, Vari väri) {
+    public Nappula(int x, int y, Tyyppi tyyppi, Vari vari) {
         this.x = x;
         this.y = y;
         this.tyyppi = tyyppi;
+        this.vari = vari;
         
     }
     
@@ -40,6 +42,19 @@ public class Nappula {
     
     public void setY(int y) {
         this.y = y;
+    }
+    
+    public Tyyppi getTyyppi() {
+        return tyyppi;
+    }
+    
+    public Vari getVari() {
+        return vari;
+    }
+    
+    @Override
+    public String toString() {
+        return vari.name() + " " + tyyppi.name() + ", sijainti: " + x + "," + y; 
     }
     
 }

@@ -39,8 +39,8 @@
     <configuration>
         <instrumentation>
             <includes>
-                <include>Shakki.logiikka/*.class</include>
-                <include>Shakki.tekoaly/*.class</include>
+                <include>Nappula/*.class</include>
+                <include>shakki/*.class</include>
             </includes>
         </instrumentation>
     </configuration>
@@ -52,12 +52,12 @@
     <version>0.30</version>
     <configuration>
         <targetClasses>
-            <param>Shakki.logiikka.*</param>
-            <param>Shakki.tekoaly.*</param>
+            <param>Nappula.*</param>
+            <param>shakki.*</param>
         </targetClasses>
         <targetTests>
-            <param>Shakki.logiikka*</param>
-            <param>Shakki.tekoaly.*</param>
+            <param>Nappula*</param>
+            <param>shakki.*</param>
         </targetTests>
     </configuration>
 </plugin>

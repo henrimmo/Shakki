@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package shakki.shakki;
+package shakki;
 
 /**
  *
@@ -29,6 +29,15 @@ public class Ruutu {
     }
     
     public boolean onkoRuudunSijaintiSallittu() {
-        return vaaka >= 0 && vaaka < 8 && pysty >= 0 && pysty <8;
+        if (vaaka >= 0 && vaaka < 8 && pysty >= 0 && pysty < 8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return vaaka + "," + pysty;
     }
 }
