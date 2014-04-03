@@ -4,4 +4,5 @@
 
 **Kaikkien käyttäjien toiminnot:** Nappulan siirto, nappulan syönti, voittaminen, häviäminen
 
-Siirrot tullaan syöttämään näppäimistöllä. Erikoisliikkeet toteutetaan mikäli aikaa jää yli
+Siirrot tullaan syöttämään näppäimistöllä. Ohjelma tulee käyttämään (ainakin aluksi) tekstikäyttöliittymää.
+Erikoisliikkeet(en passant, linnoittautuminen) toteutetaan mikäli aikaa jää yli. Mahdollisesti myös pelin tallentaminen ja lataaminen.
