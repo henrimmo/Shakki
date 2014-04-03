@@ -16,49 +16,28 @@ import java.util.Map;
  */
 public class Lauta {
     
-    
-    private final Map<Ruutu, Nappula> sijainnit;
-    
-    public Lauta() {
-        this.sijainnit = new HashMap<Ruutu, Nappula>();
-    }
-    
-    public void asetaNappula(Ruutu ruutu, Nappula nappula) {
-        if (ruutu != null && nappula != null) {
-            sijainnit.put(ruutu, nappula);
-        }
-    }
+    public Nappula[][] nappulaSijainnit;
 
     
-    public boolean onkoRuutuVapaa(Ruutu kohde) {
-        boolean apu = true;
-        for (Ruutu ruutu : sijainnit.keySet()) {
-           if (sijainnit.get(ruutu).getX() == kohde.getVaaka() && sijainnit.get(ruutu).getY() == kohde.getPysty()) {
-               apu = false;
-           }
-        }
-        return apu;
-    } 
-    
-    public void siirry(Ruutu alku, Ruutu kohde) {
-        if (alku != null && kohde != null) {
-            for (Ruutu ruutu : sijainnit.keySet()) { 
-                sijainnit.get(alku).setX(kohde.getVaaka());
-                sijainnit.get(alku).setY(kohde.getPysty());
-            }
-        }
+    public Lauta() {
+        nappulaSijainnit = new Nappula[8][8];
     }
     
-    @Override
-    public String toString() {
-        String ruudut = "";
-        String nappulat = "";
-        for (Ruutu ruutu : sijainnit.keySet()) {
-//            ruudut = ruudut + ruutu.toString();
-            nappulat = nappulat + " " + sijainnit.get(ruutu).toString();
-        }
-        return nappulat;
+    public Nappula asetaNappula(Nappula nappula, int x, int y) {
+        nappulaSijainnit[x][y] = nappula;
+        nappula.x = x;
+        nappula.y = y;
+        return nappula;
     }
+    
+        public boolean siirraNappula(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+             nappulaSijainnit[kohdeX][kohdeY] = nappulaSijainnit[alkuX][alkuY];
+             nappulaSijainnit[alkuX][alkuY] = null;
+             return true;
+    }
+    
+
+
     
     
 
