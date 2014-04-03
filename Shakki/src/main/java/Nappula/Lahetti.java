@@ -8,23 +8,23 @@ package Nappula;
  *
  * @author Henri
  */
-public class Ratsu extends Nappula{
+public class Lahetti extends Nappula{
     
-    public Ratsu(int x, int y, boolean vari) {
+    public Lahetti(int x, int y, boolean vari) {
         super(x, y, vari);
         if (vari) {
-            tyyppi = "R";
+            tyyppi = "L";
         } else {
-            tyyppi = "r";
+            tyyppi = "l";
         }
     }
     
-    public Ratsu(boolean vari) {
+    public Lahetti(boolean vari) {
         super(vari);
                 if (vari) {
-            tyyppi = "R";
+            tyyppi = "L";
         } else {
-            tyyppi = "r";
+            tyyppi = "l";
         }
     }
 
@@ -32,6 +32,5 @@ public class Ratsu extends Nappula{
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 
 }

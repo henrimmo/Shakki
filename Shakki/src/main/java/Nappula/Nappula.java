@@ -9,19 +9,35 @@ package Nappula;
 import shakki.Lauta;
 
 
+
+
 /**
- *
+ *Abstrakti yläluokka, jonka eri nappulat perivät.
  * @author henrimmo
  */
-public class Nappula {
+public abstract class Nappula {
     
     public int x;
     public int y;
     
-    //isot kirjaimet valkoisia, pienet mustia
-    public char tyyppi;
+/*
+ * Nappulan tyyppi String-muuttujana
+ * Isot kirjaimet valkoisia, pienet mustia.
+ * 
+ * S = Sotilas
+ * T = Torni
+ * R = Ratsu
+ * L = Lähetti
+ * Q = Kuningatar
+ * K = kuningas
+ */
+    public String tyyppi;
     
-    //true = valkoinen, false = musta
+/*
+ * Nappulan väri boolean muuttujana
+ * true = valkoinen
+ * false = musta
+ */
     private boolean vari;
     
     
@@ -29,10 +45,57 @@ public class Nappula {
     public Nappula(int x, int y, boolean vari) {
         this.x = x;
         this.y = y;
-        this.vari = vari;
-        
+        this.vari = vari;   
     }
     
+    public Nappula(boolean vari) {
+        this.vari = vari;
+    }
+    
+    public boolean getVari() {
+        return vari;
+    }
+    
+    
+    /*
+     * Tarkistaa, onko haluttu siirto laudan rajojen sisäpuolella.
+     * Palauttaa true jos on, false jos ei.
+     * 
+     * @param   alkuX   alkuperäinen x-koordinaatti
+     * @param   alkuY   alkuperäinen y-koordinaatti
+     * @param   kohdeX  haluttu x-koordinaatti
+     * @param   kohdeY  haluttu y-koordinaatti
+     * 
+     * @return  boolean riippuu olivatko koordinaatit laudan sisällä
+     */
+    public boolean siirtoLaudalla(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+        if(alkuX >= 0 && alkuX <8 && alkuY >= 0 && alkuY < 8 && kohdeX >= 0 && kohdeX <8 && kohdeY > 0 && kohdeY <8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public abstract boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY);
+    
+    public String getTyyppi() {
+        return tyyppi;
+    }
 
+    /*
+     * Poistaa nappulan laudalta
+     * 
+     * @param   x   poistettavan nappulan x-koordinaatti
+     * @param   y   poistettavan nappulan y-koordinaatti
+     */
+    public void poistaNappula(Lauta lauta, int x, int y) {
+        lauta.nappulat[x][y] = null;
+    }
+    
+    
+
+    
+    
+    
     
 }

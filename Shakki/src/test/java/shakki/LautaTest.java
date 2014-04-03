@@ -1,41 +1,65 @@
-///*
-// * To change this template, choose Tools | Templates
-// * and open the template in the editor.
-// */
-//package shakki;
-//
-//import Nappula.Nappula;
-//import Nappula.Tyyppi;
-//import Nappula.Vari;
-//import org.junit.After;
-//import org.junit.AfterClass;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
-//import static org.junit.Assert.*;
-//
-///**
-// *
-// * @author Henri
-// */
-//public class LautaTest {
-//    
-//    Lauta lauta;
-//    Ruutu ruutu;
-//    Nappula nappula;
-//    public LautaTest() {
-//    }
-//    
-//    @Before
-//    public void setUp() {
-//        lauta = new Lauta();
-//        ruutu = new Ruutu(0,0);
-//        nappula = new Nappula(0, 0, Tyyppi.SOTILAS, Vari.VALKOINEN);
-//    }
-//
-//    @Test
-//    public void asettuukoNappulaOikein() {
-//    lauta.asetaNappula(ruutu, nappula);
-//    assertEquals("VALKOINEN SOTILAS, sijainti: 0,0", nappula.toString());
-//    }
-//}
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package shakki;
+
+import Nappula.Nappula;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Henri
+ */
+public class LautaTest {
+    
+    Lauta lauta;
+
+    Nappula nappula;
+    public LautaTest() {
+    }
+    
+    @Before
+    public void setUp() {
+        lauta = new Lauta();
+        lauta.asetaLauta();
+    }
+
+    @Test
+    public void asettuukoNappulaOikein() {
+        assertEquals("S",lauta.getNappula(0, 1).getTyyppi());
+        assertEquals("K",lauta.getNappula(4, 0).getTyyppi());  
+        assertEquals("q",lauta.getNappula(3, 7).getTyyppi());
+    }
+    
+    @Test
+    public void meneekoVariOikein() {
+        assertEquals(false,lauta.getNappula(3, 7).getVari());
+        assertEquals(true,lauta.getNappula(4, 0).getVari());  
+    }
+    
+    @Test
+    public void poistuukoNappula() {
+        lauta.getNappula(0, 1).poistaNappula(lauta, 0, 1);
+        assertEquals(null, lauta.getNappula(0, 1));
+    }
+    
+    @Test
+    public void siirtyykoNappula() {
+       lauta.siirraNappula(0, 0, 0, 3);
+       assertEquals("T",lauta.getNappula(0, 3).getTyyppi());
+    }
+    
+    @Test
+    public void siirtyykoVainOmaNappula() {
+        lauta.siirraNappula(7, 7, 7, 4);
+        assertEquals("t",lauta.getNappula(7, 7).getTyyppi());
+    }
+    
+
+}

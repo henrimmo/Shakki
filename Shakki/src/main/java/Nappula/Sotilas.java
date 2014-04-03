@@ -8,23 +8,23 @@ package Nappula;
  *
  * @author Henri
  */
-public class Ratsu extends Nappula{
+public class Sotilas extends Nappula{
     
-    public Ratsu(int x, int y, boolean vari) {
+    public Sotilas(int x, int y, boolean vari) {
         super(x, y, vari);
         if (vari) {
-            tyyppi = "R";
+            tyyppi = "S";
         } else {
-            tyyppi = "r";
+            tyyppi = "s";
         }
     }
     
-    public Ratsu(boolean vari) {
+    public Sotilas(boolean vari) {
         super(vari);
-                if (vari) {
-            tyyppi = "R";
+                if (vari = true) {
+            tyyppi = "S";
         } else {
-            tyyppi = "r";
+            tyyppi = "s";
         }
     }
 
@@ -34,4 +34,5 @@ public class Ratsu extends Nappula{
     }
 
 
+    
 }
