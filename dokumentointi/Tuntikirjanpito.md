@@ -13,8 +13,17 @@ Jäi kokonaan välistä
 3.4
 10h
 
-Pari viime viikkoa on ollut kovin kiireistä ja aikaa tälle ohjelmanteolle ei ole oikein tahtonut löytä. 4. Deadlineen ohjelma muuttikin muotoaan melkoisesti, suurin osa aikasemmasta työstä tuli tehtyä uudestaan ja tuntuukin että olen aikataulusta jonkin verran jäljessä.
+**Deadline5**
 
+9.4
+6h
+
+Nappuloiden liikkumissäännöt ja testejä. Joitakin metodeja Lauta-luokkaan.
+
+10.4
+8h
+
+Tyhjä - nappulan lisäys. Ruutujen välin tarkistus ja pientä viilailua. Joitakin testejä.
 
 
 
