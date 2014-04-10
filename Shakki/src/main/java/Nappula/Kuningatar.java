@@ -32,7 +32,7 @@ public class Kuningatar extends Nappula{
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
         if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
             if(alkuX != kohdeX || alkuY != kohdeY) {
-                if (Math.abs(kohdeX - alkuX) == Math.abs(kohdeY - alkuY) || kohdeX - alkuX == 0 || kohdeY - alkuY == 0) {
+                if (Math.abs(kohdeX - alkuX) == Math.abs(kohdeY - alkuY) || kohdeX == alkuX || kohdeY == alkuY) {
                     return true;
                 }
             }

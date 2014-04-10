@@ -33,7 +33,7 @@ public class Torni extends Nappula{
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
         if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
             if(alkuX != kohdeX || alkuY != kohdeY) {
-                if (alkuX - kohdeX == 0 || alkuY - kohdeY == 0) {
+                if (alkuX == kohdeX || alkuY == kohdeY) {
                     return true;
                 }
             }

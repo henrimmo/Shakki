@@ -76,6 +76,9 @@ public abstract class Nappula {
         }
     }
     
+    /*
+     * abstrakti metodi, jokaisella nappulalla on oma siirtosääntönsä
+     */
     public abstract boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY);
     
     public String getTyyppi() {

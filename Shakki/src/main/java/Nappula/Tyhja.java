@@ -5,7 +5,7 @@
 package Nappula;
 
 /**
- *
+ *"Tyhjä" nappula. Sijaitsee ruuduissa joissa ei ole "kunnon" nappullaa
  * @author Henri
  */
 public class Tyhja extends Nappula{

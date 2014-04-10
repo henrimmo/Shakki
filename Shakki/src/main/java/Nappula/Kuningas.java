@@ -4,10 +4,7 @@
  */
 package Nappula;
 
-/**
- *
- * @author Henri
- */
+
 public class Kuningas extends Nappula{
     
     public Kuningas(int x, int y, boolean vari) {
@@ -27,6 +24,7 @@ public class Kuningas extends Nappula{
             tyyppi = "k";
         }
     }
+
 
     @Override
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
