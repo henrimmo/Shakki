@@ -45,7 +45,7 @@ public class LautaTest {
     
     @Test
     public void poistuukoNappula() {
-        lauta.getNappula(0, 1).poistaNappula(lauta, 0, 1);
+        lauta.poistaNappula(0, 1);
         assertEquals(null, lauta.getNappula(0, 1));
     }
     
@@ -61,5 +61,25 @@ public class LautaTest {
         assertEquals("t",lauta.getNappula(7, 7).getTyyppi());
     }
     
+    @Test
+    public void vuoroVaihtuuOikein() {
+       lauta.siirraNappula(0, 0, 0, 3);
+       assertEquals("T",lauta.getNappula(0, 3).getTyyppi());
+       lauta.siirraNappula(7, 7, 7, 4);
+       assertEquals("t",lauta.getNappula(7, 4).getTyyppi());
+       lauta.siirraNappula(7, 4, 7, 7);
+       assertEquals("t",lauta.getNappula(7, 4).getTyyppi()); 
+    }
+    
+    @Test
+    public void ruudunTyhjyys() {
+        assertEquals(true,lauta.onkoRuutuTyhja(4, 4));
+    }
+    
+//    @Test
+//    public void tyhjaaNappulaaEiVoiSiirtää() {
+//        
+//        assertEquals("Valitse ruutu jossa on nappula",lauta.siirraNappula(4, 4, 5, 5));
+//    }
 
 }

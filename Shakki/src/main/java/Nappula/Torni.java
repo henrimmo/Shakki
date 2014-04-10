@@ -13,7 +13,7 @@ public class Torni extends Nappula{
     
     public Torni(int x, int y, boolean vari) {
         super(x, y, vari);
-        if (vari = true) {
+        if (vari) {
             tyyppi = "T";
         } else {
             tyyppi = "t";

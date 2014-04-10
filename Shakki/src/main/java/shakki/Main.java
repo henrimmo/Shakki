@@ -10,6 +10,8 @@ package shakki;
  */
 public class Main {
      public static void main(String[] args) {
-         
+       Lauta lauta = new Lauta();
+       lauta.asetaLauta();
+       lauta.siirraNappula(4, 4, 5, 5);
     }
 }

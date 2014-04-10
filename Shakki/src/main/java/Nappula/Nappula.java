@@ -69,7 +69,7 @@ public abstract class Nappula {
      * @return  boolean riippuu olivatko koordinaatit laudan sisällä
      */
     public boolean siirtoLaudalla(int alkuX, int alkuY, int kohdeX, int kohdeY) {
-        if(alkuX >= 0 && alkuX <8 && alkuY >= 0 && alkuY < 8 && kohdeX >= 0 && kohdeX <8 && kohdeY > 0 && kohdeY <8) {
+        if(alkuX >= 0 && alkuX <8 && alkuY >= 0 && alkuY < 8 && kohdeX >= 0 && kohdeX <8 && kohdeY >= 0 && kohdeY <8) {
             return true;
         } else {
             return false;
@@ -82,20 +82,5 @@ public abstract class Nappula {
         return tyyppi;
     }
 
-    /*
-     * Poistaa nappulan laudalta
-     * 
-     * @param   x   poistettavan nappulan x-koordinaatti
-     * @param   y   poistettavan nappulan y-koordinaatti
-     */
-    public void poistaNappula(Lauta lauta, int x, int y) {
-        lauta.nappulat[x][y] = null;
-    }
-    
-    
 
-    
-    
-    
-    
 }

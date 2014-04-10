@@ -30,7 +30,17 @@ public class Ratsu extends Nappula{
 
     @Override
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
+            if(alkuX != kohdeX || alkuY != kohdeY) {
+                if(Math.abs(kohdeX - alkuX) == 2 &&  Math.abs(kohdeY - alkuY) == 1) {
+                    return true;
+                }
+            }   
+                if(Math.abs(kohdeX - alkuX) == 1 &&  Math.abs(kohdeY - alkuY) == 2) {
+                    return true;
+                }
+        }
+        return false;
     }
 
 

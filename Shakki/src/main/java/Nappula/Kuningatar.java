@@ -30,7 +30,15 @@ public class Kuningatar extends Nappula{
 
     @Override
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
+            if(alkuX != kohdeX || alkuY != kohdeY) {
+                if (Math.abs(kohdeX - alkuX) == Math.abs(kohdeY - alkuY) || kohdeX - alkuX == 0 || kohdeY - alkuY == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+    
 
 }

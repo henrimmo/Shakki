@@ -10,6 +10,8 @@ package Nappula;
  */
 public class Sotilas extends Nappula{
     
+    private boolean ekaSiirto;
+    
     public Sotilas(int x, int y, boolean vari) {
         super(x, y, vari);
         if (vari) {
@@ -17,22 +19,47 @@ public class Sotilas extends Nappula{
         } else {
             tyyppi = "s";
         }
+        ekaSiirto = true;
     }
     
     public Sotilas(boolean vari) {
         super(vari);
-                if (vari = true) {
+                if (vari) {
             tyyppi = "S";
         } else {
             tyyppi = "s";
         }
+        ekaSiirto = true;        
     }
 
     @Override
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
+            if(alkuX != kohdeX || alkuY != kohdeY) {
+                if (this.getVari() == true) {
+                    if(ekaSiirto == true) {
+                        if(kohdeY - alkuY == 2 || kohdeY - alkuY == 1) {
+                            ekaSiirto = false;
+                            return true;
+                        }
+                    }
+                    if (kohdeY - alkuY == 1) {
+                        return true;
+                    }
+                } 
+                if(this.getVari()==false){
+                    if(ekaSiirto == true) {
+                        if(kohdeY - alkuY == -2 || kohdeY - alkuY == -1) {
+                            ekaSiirto = false;
+                            return true;
+                        }
+                    }
+                    if(kohdeY - alkuY == -1) {
+                        return true;
+                    }
+                } 
+            }
+        }
+        return false;
     }
-
-
-    
 }

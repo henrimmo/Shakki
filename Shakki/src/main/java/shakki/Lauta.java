@@ -13,6 +13,7 @@ import Nappula.Nappula;
 import Nappula.Ratsu;
 import Nappula.Sotilas;
 import Nappula.Torni;
+import Nappula.Tyhja;
 
 /**
  *Sisältää shakkipelin pelimekaniikan ja siirtoihin liittyviä toimintoja
@@ -47,7 +48,21 @@ public class Lauta {
  * vaihtaa vuoron valkoiselle
  */
     
+    public void asetaTyhjaLauta() {
+       for(int x = 0; x <8; x++) {
+            for(int y = 0; y <8; y++) {
+                setNappula(new Tyhja(true), x,y);
+            }
+        } 
+    }
+    
     public void asetaLauta() {
+        
+        for(int x = 0; x <8; x++) {
+            for(int y = 2; y <6; y++) {
+                setNappula(new Tyhja(true), x,y);
+            }
+        }
         
 //          valkoisen nappulat
         setNappula(new Torni(true), 0, 0);
@@ -93,6 +108,10 @@ public class Lauta {
         vuoro = !vuoro;
     }
     
+    public void setVuoroValk() {
+        vuoro = true;
+    }
+    
     /*
      * Siirtää nappulan alkuperäisestä ruudusta haluttuun ruutuun.
      * 
@@ -102,12 +121,22 @@ public class Lauta {
      * @param   kohdeY  halutun ruudun y-koordinaatti
      */
     public void siirraNappula(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+        if(onkoRuutuTyhja(alkuX, alkuY) == true) {
+                System.out.println("Valitse ruutu jossa on nappula"); 
+            } else
         if (nappulat[alkuX][alkuY] != null) {
+            
+            
             if(nappulat[alkuX][alkuY].siirra(alkuX, alkuY, kohdeX, kohdeY) == true) {
                 if (oikeaVari(alkuX, alkuY) == vuoro) {
-                  setNappula(nappulat[alkuX][alkuY], kohdeX, kohdeY);
-                    nappulat[alkuX][alkuY].poistaNappula(this, alkuX, alkuY);
-                    vaihdaVuoro();
+                    
+                    if(onkoRuutuTyhja(kohdeX, kohdeY) == true || nappulat[kohdeX][kohdeY].getVari() != vuoro) {
+                        poistaNappula(kohdeX, kohdeY);
+                        setNappula(nappulat[alkuX][alkuY], kohdeX, kohdeY);
+                        poistaNappula(alkuX, alkuY);
+                        vaihdaVuoro();  
+                        setNappula(new Tyhja(true), alkuX, alkuY);
+                    }
                 }
             }
         }
@@ -130,9 +159,32 @@ public class Lauta {
         }
     }
     
-
+    /*
+     * Poistaa nappulan laudalta
+     * 
+     * @param   x   poistettavan nappulan x-koordinaatti
+     * @param   y   poistettavan nappulan y-koordinaatti
+     */
+    
+    public void poistaNappula(int x, int y) {
+        nappulat[x][y] = null;
+    }
+    
+    public void syoNappula(int x, int y) {
+        if(nappulat[x][y].getVari() != vuoro) {
+            poistaNappula(x,y);
+        }
+        
+    }
     
 
     
+    public boolean onkoRuutuTyhja(int x, int y) {
+        if(getNappula(x, y).getTyyppi().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
