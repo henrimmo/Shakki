@@ -241,6 +241,29 @@ public class Lauta {
      * @return  palauttaa true jos väli on tyhjä, false jos ei
      */
     public boolean onkoValiTyhja(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+
+        if(alkuY == kohdeY && onkoValiTyhjaVaaka(alkuX, alkuY, kohdeX, kohdeY) == false) {
+            return false;
+        }
+        
+        
+        
+        if(alkuX == kohdeX && onkoValiTyhjaPysty(alkuX, alkuY, kohdeX, kohdeY) == false) {
+            return false;
+        }
+        
+       
+
+        if ((alkuX - alkuY == kohdeX - kohdeY || alkuX + alkuY == kohdeX + kohdeY) 
+                && onkoValiTyhjaVino(alkuX, alkuY, kohdeX, kohdeY)==false){
+            return false;
+ 
+        }
+
+        return true;
+    }
+    
+    public boolean onkoValiTyhjaVaaka(int alkuX, int alkuY, int kohdeX, int kohdeY) {
         String k = "";
 
         if(kohdeX > alkuX && alkuY == kohdeY) {
@@ -255,6 +278,18 @@ public class Lauta {
             }
         }
         
+        if(k.length() == 0) {
+            return true;  
+        } else {
+            System.out.println("Laiton siirto, välissä on nappula!");
+            return false;
+        } 
+    }
+    
+    public boolean onkoValiTyhjaPysty(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+        
+        String k = "";
+        
         if(kohdeY > alkuY && alkuX == kohdeX) {
             for(int i = alkuY +1; i < kohdeY;i++) {
                 k = k + nappulat[kohdeX][i].getTyyppi();
@@ -266,11 +301,20 @@ public class Lauta {
                 k = k + nappulat[kohdeX][i].getTyyppi();
             }
         }
-
-        if(alkuX - alkuY == kohdeX - kohdeY || alkuX + alkuY == kohdeX + kohdeY){
-            
-            
-            if(kohdeX < alkuX && kohdeY < alkuY) {
+        
+        if(k.length() == 0) {
+            return true;  
+        } else {
+            System.out.println("Laiton siirto, välissä on nappula!");
+            return false;
+        }
+    }
+    
+    public boolean onkoValiTyhjaVino(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+        
+        String k = "";
+        
+        if(kohdeX < alkuX && kohdeY < alkuY) {
                 int i = kohdeX +1;
                 int j = kohdeY +1;
                 
@@ -313,14 +357,13 @@ public class Lauta {
                     j--;
                 }
             }
-        }
-
-        if(k.length() == 0) {
+            
+            if(k.length() == 0) {
             return true;  
         } else {
             System.out.println("Laiton siirto, välissä on nappula!");
             return false;
-        } 
-    }  
+        }
+    }
 }
 

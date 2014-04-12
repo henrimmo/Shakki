@@ -97,18 +97,18 @@ public class LautaTest {
     @Test
     public void ruutuValiTarkistusPysty() {
         lauta.tyhjennaLauta();
-        lauta.setNappula(new Torni(false), 7, 7);
-        lauta.setNappula(new Sotilas(false), 7, 6);
-        lauta.setNappula(new Torni(true), 7, 5);
-        lauta.setNappula(new Tyhja(true), 7, 4);
+        lauta.setNappula(new Torni(false), 2, 1);
+        lauta.setNappula(new Sotilas(false), 2, 6);
+        lauta.setNappula(new Torni(true), 2, 5);
+        lauta.setNappula(new Tyhja(true), 2, 4);
         lauta.setNappula(new Tyhja(true), 2, 3);
         lauta.setNappula(new Tyhja(true), 2, 2);
         
-        assertEquals(false,lauta.onkoValiTyhja(7, 7, 7, 4));
-//        assertEquals(false,lauta.onkoValiTyhja(2, 1, 2, 6));
-//        assertEquals(true,lauta.onkoValiTyhja(2, 4, 2, 1));
-//        assertEquals(true,lauta.onkoValiTyhja(2, 6, 2, 4));
-//        assertEquals(true,lauta.onkoValiTyhja(2, 6, 2, 4));
+        assertEquals(true,lauta.onkoValiTyhja(2, 1, 2, 5));
+        assertEquals(false,lauta.onkoValiTyhja(2, 1, 2, 6));
+        assertEquals(true,lauta.onkoValiTyhja(2, 4, 2, 1));
+        assertEquals(false,lauta.onkoValiTyhja(2, 6, 2, 4));
+        assertEquals(false,lauta.onkoValiTyhja(2, 4, 2, 6));
     }
     
     @Test
