@@ -4,12 +4,20 @@
  */
 package shakki;
 
+import Kayttoliittyma.Kayttoliittyma;
+
+
+
 /**
  *
  * @author Henri
  */
 public class Main {
-     public static void main(String[] args) {
-
+    
+    public static void main(String[] args) {
+        Lauta lauta = new Lauta();
+        Kayttoliittyma liittyma = new Kayttoliittyma(lauta);
+        liittyma.aloita();
     }
+    
 }

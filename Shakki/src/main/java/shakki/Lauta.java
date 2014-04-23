@@ -55,6 +55,10 @@ public class Lauta {
         } 
     }
     
+//    public int[][] getLauta() {
+//        return nappulat;
+//    }
+    
     /*
      * tyhjentää laudan
      */

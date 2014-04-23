@@ -13,18 +13,18 @@ public class Kuningatar extends Nappula{
     public Kuningatar(int x, int y, boolean vari) {
         super(x, y, vari);
         if (vari) {
-            tyyppi = "Q";
+            tyyppi = "D";
         } else {
-            tyyppi = "q";
+            tyyppi = "d";
         }
     }
     
     public Kuningatar(boolean vari) {
         super(vari);
                 if (vari) {
-            tyyppi = "Q";
+            tyyppi = "D";
         } else {
-            tyyppi = "q";
+            tyyppi = "d";
         }
     }
 

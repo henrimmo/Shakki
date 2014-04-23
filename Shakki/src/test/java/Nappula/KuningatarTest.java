@@ -49,25 +49,25 @@ public class KuningatarTest {
         lauta.poistaNappula(0, 0);
         lauta.setNappula(new Kuningatar(true), 0, 0);
         lauta.siirraNappula(0, 0, 7, 7);
-        assertEquals("Q",lauta.getNappula(7, 7).getTyyppi());
+        assertEquals("D",lauta.getNappula(7, 7).getTyyppi());
         lauta.vaihdaVuoro();
         lauta.siirraNappula(7, 7, 0, 7);
-        assertEquals("Q",lauta.getNappula(0, 7).getTyyppi());
+        assertEquals("D",lauta.getNappula(0, 7).getTyyppi());
         lauta.vaihdaVuoro();
         lauta.siirraNappula(0, 7, 0, 0);
-        assertEquals("Q",lauta.getNappula(0, 0).getTyyppi());
+        assertEquals("D",lauta.getNappula(0, 0).getTyyppi());
     }
     
     @Test
     public void kuningatarEiLiikuLaittomasti() {
         lauta.setNappula(new Kuningatar(true), 4, 4);
         lauta.siirraNappula(4, 4, 3, 1);
-        assertEquals("Q",lauta.getNappula(4, 4).getTyyppi());
+        assertEquals("D",lauta.getNappula(4, 4).getTyyppi());
         lauta.vaihdaVuoro();
         lauta.siirraNappula(4, 4, 0, 6);
-        assertEquals("Q",lauta.getNappula(4, 4).getTyyppi());
+        assertEquals("D",lauta.getNappula(4, 4).getTyyppi());
         lauta.vaihdaVuoro();
         lauta.siirraNappula(4, 4, 3, 6);
-        assertEquals("Q",lauta.getNappula(4, 4).getTyyppi());        
+        assertEquals("D",lauta.getNappula(4, 4).getTyyppi());        
     }
 }

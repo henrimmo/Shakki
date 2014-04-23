@@ -37,7 +37,7 @@ public class LautaTest {
     public void asettuukoNappulaOikein() {
         assertEquals("S",lauta.getNappula(0, 1).getTyyppi());
         assertEquals("K",lauta.getNappula(4, 0).getTyyppi());  
-        assertEquals("q",lauta.getNappula(3, 7).getTyyppi());
+        assertEquals("d",lauta.getNappula(3, 7).getTyyppi());
     }
     
     @Test
