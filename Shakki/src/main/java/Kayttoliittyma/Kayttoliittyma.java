@@ -67,19 +67,13 @@ public class Kayttoliittyma {
         for(int j=7; j>=0; j--) {
             System.out.print((0 +j));
             for(int i=0; i<8; i++) {
-                if(!lauta.getNappula(i, j).getTyyppi().isEmpty()) {
-                    
-                      System.out.print("|"+ lauta.getNappula(i, j).getTyyppi());  
-                    
-                    
-                    
-                    
-                } else {
+                if(!lauta.getNappula(i, j).getTyyppi().isEmpty()) {     
+                      System.out.print("|"+ lauta.getNappula(i, j).getTyyppi());     
+                }   else {
                     System.out.print("| ");
-                }
-                
+                } 
             }
-            System.out.println();
+            System.out.println("|");
         }
         
         System.out.println("  0 1 2 3 4 5 6 7");
