@@ -1,0 +1,5 @@
+Nappula yliluokka: Kaikki pelin eri nappulat perivät tämän luokan. Jokainen eri nappula alaluokka sisältää luokan oman liikkumissäännön.
+
+Lauta: Sisältää pelimekaniikat ja pelilogiikan.
+
+Käyttöliittymä: Printtaa yksinkertaisen tekstikäyttöliittymän ja kysyy pelaajalta komentoja.
