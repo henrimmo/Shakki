@@ -1,1 +1,3 @@
-2 pelaajan shakki. Ei tunnista shakki/matti tilanteita, pelaajien pidettävä huolta niistä itse. Tuetut erikoissiirrot: korottautuminen, linnoitus.
+2 pelaajan shakki. Ei tunnista shakki/matti tilanteita, pelaajien pidettävä huolta niistä itse. 
+Tuetut erikoissiirrot: korottautuminen, linnoitus.
+Älä anna ohjelmalle syötteeksi kirjaimia, tämä aiheuttaa ohjelman kaatumisen.
