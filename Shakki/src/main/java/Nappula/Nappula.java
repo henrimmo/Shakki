@@ -85,5 +85,9 @@ public abstract class Nappula {
         return tyyppi;
     }
 
+    public boolean getEkaSiirto() {
+        return false;
+    }
+
 
 }

@@ -4,6 +4,7 @@
  */
 package shakki;
 
+import Nappula.Kuningas;
 import Nappula.Nappula;
 import Nappula.Sotilas;
 import Nappula.Torni;

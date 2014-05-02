@@ -35,10 +35,11 @@ public class Sotilas extends Nappula{
     @Override
     public boolean siirra(int alkuX, int alkuY, int kohdeX, int kohdeY) {
         if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
-            if(alkuX != kohdeX || alkuY != kohdeY) {
+            if(alkuX == kohdeX &&alkuY != kohdeY) {
                 if (this.getVari() == true) {
                     if(ekaSiirto == true) {
                         if(kohdeY - alkuY == 2 || kohdeY - alkuY == 1) {
+                            
                             ekaSiirto = false;
                             return true;
                         }

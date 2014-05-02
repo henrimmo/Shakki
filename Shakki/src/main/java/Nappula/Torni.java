@@ -10,6 +10,7 @@ package Nappula;
  */
 public class Torni extends Nappula{
     
+    public boolean ekaSiirto;
     
     public Torni(int x, int y, boolean vari) {
         super(x, y, vari);
@@ -18,6 +19,7 @@ public class Torni extends Nappula{
         } else {
             tyyppi = "t";
         }
+        ekaSiirto = true;
     }
     
     public Torni(boolean vari){
@@ -27,6 +29,7 @@ public class Torni extends Nappula{
         } else {
             tyyppi = "t";
         }
+        ekaSiirto = true;
     }    
 
     @Override
@@ -34,11 +37,17 @@ public class Torni extends Nappula{
         if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
             if(alkuX != kohdeX || alkuY != kohdeY) {
                 if (alkuX == kohdeX || alkuY == kohdeY) {
+                    ekaSiirto = false;
                     return true;
                 }
             }
         }
         return false;
+    }
+    
+    @Override
+        public boolean getEkaSiirto() {
+        return ekaSiirto;
     }
 
     

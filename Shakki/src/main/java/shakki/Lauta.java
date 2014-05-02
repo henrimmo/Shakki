@@ -14,6 +14,7 @@ import Nappula.Ratsu;
 import Nappula.Sotilas;
 import Nappula.Torni;
 import Nappula.Tyhja;
+import java.util.Scanner;
 
 /**
  *Sisältää shakkipelin pelimekaniikan ja siirtoihin liittyviä toimintoja
@@ -22,6 +23,8 @@ import Nappula.Tyhja;
 public class Lauta {
     
     public Nappula[][] nappulat;
+    
+    Scanner lukija = new Scanner(System.in);
     
 /*
  * vuoroa kuvaava muuttuja,
@@ -150,7 +153,19 @@ public class Lauta {
             //tarkistaa onko siirretäänkö oikeaa nappulaa oikealla vuorolla
             if(oikeaVari(alkuX, alkuY) == vuoro) {
                 
-                //tarkistaa onko siirto nappulan siirtosäännön mukainen
+//                //tarkistaa onko kyseessä linnoitus-siirto. Tällöin nappulakohtaisista siirtosäännöistä ei välitettä.
+//                if(linnoitusTarkistus(alkuX, alkuY, kohdeX, kohdeY)  == true){
+//                    if (onkoRuutuTyhja(kohdeX, kohdeY) == true || nappulat[kohdeX][kohdeY].getVari() != vuoro){
+////                        if(onkoValiTyhja(alkuX, alkuY, kohdeX, kohdeY) == true) {
+//                            linnoitusSiirto(alkuX,alkuY,kohdeX,kohdeY);
+//                            
+//                            vaihdaVuoro(); 
+//                        }
+////                    }     
+//                }
+//                
+//                //tarkistaa onko siirto nappulan siirtosäännön mukainen
+//                else {
                 if (nappulat[alkuX][alkuY].siirra(alkuX, alkuY, kohdeX, kohdeY) == true) {
                     
                     //tarkistaa onko siirrettävä nappula ratsu. Tällöin siirron välissä olevista nappuloista ei välitetä
@@ -158,11 +173,7 @@ public class Lauta {
                         //tarkistaa onko kohde ruutu tyhjä tai onko siinä vastustajan nappula
                         if(onkoRuutuTyhja(kohdeX, kohdeY) == true || nappulat[kohdeX][kohdeY].getVari() != vuoro) {
 
-                            poistaNappula(kohdeX, kohdeY);
-                            setNappula(nappulat[alkuX][alkuY], kohdeX, kohdeY);
-
-                            poistaNappula(alkuX, alkuY);
-                            setNappula(new Tyhja(true), alkuX, alkuY);
+                            pakotaSiirto(alkuX, alkuY, kohdeX, kohdeY);
 
                             vaihdaVuoro();      
                         } 
@@ -172,18 +183,36 @@ public class Lauta {
                         if(onkoValiTyhja(alkuX, alkuY, kohdeX, kohdeY) == true) {
                             if(onkoRuutuTyhja(kohdeX, kohdeY) == true || nappulat[kohdeX][kohdeY].getVari() != vuoro) {
                         
-                                poistaNappula(kohdeX, kohdeY);
-                                setNappula(nappulat[alkuX][alkuY], kohdeX, kohdeY);
-
-                                poistaNappula(alkuX, alkuY);
-                                setNappula(new Tyhja(true), alkuX, alkuY);
-
+                                pakotaSiirto(alkuX, alkuY, kohdeX, kohdeY);
+                                
+                                //tarkistaa pitääkö sotilas korottaa
+                                if(sotilasTarkistus(kohdeX, kohdeY)==true) {
+                                    sotilaanKorotus(kohdeX, kohdeY);
+                                }
                                 vaihdaVuoro();  
-                            }
+                            } }
                         }
-                    }   
+                } else {
+                    if(nappulat[alkuX][alkuY].getTyyppi().equals("K") || nappulat[alkuX][alkuY].getTyyppi().equals("k")) {
+                        if(linnoitusTarkistus(alkuX, alkuY, kohdeX, kohdeY)  == true){
+                            if (onkoRuutuTyhja(kohdeX, kohdeY) == true || nappulat[kohdeX][kohdeY].getVari() != vuoro){
+                                if(onkoValiTyhja(alkuX, alkuY, kohdeX, kohdeY) == true) {
+                                    linnoitusSiirto(alkuX,alkuY,kohdeX,kohdeY);
+                           
+                                    vaihdaVuoro(); 
+                                }
+                            }     
+                        }
+                    }
                 }
+                    if (sotilasVoiSyoda(alkuX,alkuY,kohdeX,kohdeY) == true){
+                    
+                        pakotaSiirto(alkuX,alkuY,kohdeX,kohdeY);
+                        vaihdaVuoro();  
+                    }
+                 
             }
+            
         }
     }
     
@@ -369,5 +398,177 @@ public class Lauta {
             return false;
         }
     }
+    
+    public boolean sotilasTarkistus(int x, int y) {
+        if(getNappula(x, y).getTyyppi().equals("S") && y == 7) {
+            return true;
+        } else if (getNappula(x,y).getTyyppi().equals("s") && y == 0) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+     public void sotilaanKorotus(int x, int y) {
+        boolean vari = getNappula(x, y).getVari();
+        int k;
+        
+        poistaNappula(x, y);
+        
+        System.out.println("Sotilaan korotus: Valitse haluamasi nappula");
+        System.out.println("1 = Torni");
+        System.out.println("2 = Ratsu");
+        System.out.println("3 = Lähetti");
+        System.out.println("4 = Kuningatar");
+        
+        
+        do{
+            System.out.println("Anna luku väliltä 1-4");
+            k = lukija.nextInt();
+        } while(k < 1 || k > 4); 
+         
+        if(k == 1) {
+            setNappula(new Torni(vari), x, y);
+            
+        }
+        
+        if(k==2) {
+            setNappula(new Ratsu(vari), x, y);
+            
+        }
+        
+        if(k==3) {
+            setNappula(new Lahetti(vari), x, y);
+            
+        }
+        
+        if(k==4) {
+            setNappula(new Kuningatar(vari), x, y);
+            
+        }
+    }
+     
+     public void pakotaSiirto(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+        poistaNappula(kohdeX, kohdeY);
+        setNappula(nappulat[alkuX][alkuY], kohdeX, kohdeY);
+        poistaNappula(alkuX, alkuY);
+        setNappula(new Tyhja(true), alkuX, alkuY);
+     }
+     
+     public void linnoitusSiirto(int x1, int y1, int x2, int y2) {
+         
+         if(getNappula(x1,y1).getTyyppi().equals("K")) {
+            if(x2 == 2 && y2 == 0) {
+                         poistaNappula(0, 0);
+                         setNappula(new Torni(true),3,0);
+                         setNappula(new Tyhja(true), 0, 0);
+                         pakotaSiirto(x1,y1,x2,y2);
+            }     
+            if(x2 == 6 && y2 == 0) {
+                    
+                         poistaNappula(7, 0);
+                         setNappula(new Torni(true),5,0);
+                         setNappula(new Tyhja(true), 7, 0);
+                         pakotaSiirto(x1,y1,x2,y2);
+                     
+                 }
+         }
+         if(getNappula(x1,y1).getTyyppi().equals("k")) {
+                 if(x2 == 2 && y2 == 7) {
+                     
+                         poistaNappula(0, 7);
+                         setNappula(new Torni(false),3,7);
+                         setNappula(new Tyhja(true), 0, 7);
+                         pakotaSiirto(x1,y1,x2,y2);
+                         
+                    
+                 }
+                 if(x2 == 6 && y2 == 7) {
+                     
+                         poistaNappula(7, 7);
+                         setNappula(new Torni(false),5,7);
+                         setNappula(new Tyhja(true), 7, 7);
+                         pakotaSiirto(x1,y1,x2,y2);
+                         
+                     
+                 }
+             }
+         
+     }
+     
+     public boolean linnoitusTarkistus(int x1, int y1, int x2, int y2) {
+         boolean b = false;
+         if(getNappula(x1,y1).getEkaSiirto()== true) {
+             if(getNappula(x1,y1).getTyyppi().equals("K")) {
+                 if(x2 == 2 && y2 == 0) {
+                     if(getNappula(0,0).getEkaSiirto()==true) {
+ 
+                         b= true;
+                     }
+                 }
+                 if(x2 == 6 && y2 == 0) {
+                     if(getNappula(7,0).getEkaSiirto()==true) {
+
+                         b= true;
+                     }
+                 }
+             }
+             else if(getNappula(x1,y1).getTyyppi().equals("k")) {
+                 if(x2 == 2 && y2 == 7) {
+                     if(getNappula(0,7).getEkaSiirto()==true) {
+
+                         b=true;
+                     }
+                 }
+                 if(x2 == 6 && y2 == 7) {
+                     if(getNappula(7,7).getEkaSiirto()==true) {
+
+                         b=true;
+                     }
+                 }
+             }
+         } 
+         return b;
+     }
+     
+     public boolean sotilasVoiSyoda(int alkuX, int alkuY, int kohdeX, int kohdeY) {
+         boolean b = false;
+         if(getNappula(alkuX, alkuY).getTyyppi().equals("S")) {
+             if(kohdeY == alkuY+1) {
+                 if(kohdeX ==alkuX -1) {
+                     if(getNappula(kohdeX, kohdeY).getTyyppi().length()==1 && 
+                             getNappula(kohdeX, kohdeY).getVari() != vuoro) {
+                         b= true;
+                     }
+                 }
+                 if(kohdeX ==alkuX +1) {
+                     if(getNappula(kohdeX, kohdeY).getTyyppi().length()==1 && 
+                             getNappula(kohdeX, kohdeY).getVari() != vuoro) {
+                         b=true;
+                     }
+                 }
+                 
+             }
+         }
+         
+         if(getNappula(alkuX, alkuY).getTyyppi().equals("s")) {
+             if(kohdeY == alkuY-1) {
+                 if(kohdeX ==alkuX -1) {
+                     if(getNappula(kohdeX, kohdeY).getTyyppi().length()==1 && 
+                             getNappula(kohdeX, kohdeY).getVari() != vuoro) {
+                         b= true;
+                     }
+                 }
+                 if(kohdeX ==alkuX -1) {
+                     if(getNappula(kohdeX, kohdeY).getTyyppi().length()==1 && 
+                             getNappula(kohdeX, kohdeY).getVari() != vuoro) {
+                         b= true;
+                     }
+                 }
+                 
+             }
+         }
+         return b;
+     }
 }
 

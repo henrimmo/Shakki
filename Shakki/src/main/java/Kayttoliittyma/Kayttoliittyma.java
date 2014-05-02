@@ -15,7 +15,7 @@ public class Kayttoliittyma {
     
     private Lauta lauta;
     private Scanner lukija = new Scanner(System.in);
-    private boolean jatkuu;
+    private boolean jatkuu =true;
     
     public Kayttoliittyma(Lauta lauta) {
         this.lauta = lauta;
@@ -33,6 +33,10 @@ public class Kayttoliittyma {
             
             if(komento == 1) {
                 aloitaPeli();
+            }
+            
+            if(komento ==2) {
+                
             }
         }
     }
@@ -52,7 +56,7 @@ public class Kayttoliittyma {
     
     public void aloitaPeli() {
         lauta.asetaLauta();
-        jatkuu = true;
+        
         lukija.nextLine();
         
         while(jatkuu = true) {
@@ -98,7 +102,6 @@ public class Kayttoliittyma {
     public void annaSiirto() {
         System.out.println();
         System.out.println("Anna siirto");
-        
         int x1;
         int y1;
         int x2;
@@ -108,9 +111,7 @@ public class Kayttoliittyma {
         do {
             System.out.println("Anna lähtöruudun x-koordinaatti");
             x1 = lukija.nextInt();
-            if(x1==0000) {
-                jatkuu = false;
-            }
+
         }   while(syoteOikein(x1)==false);
         
         do {
@@ -130,6 +131,8 @@ public class Kayttoliittyma {
         
         lauta.siirraNappula(x1, y1, x2, y2);
     }
+    
+   
 }
 
 

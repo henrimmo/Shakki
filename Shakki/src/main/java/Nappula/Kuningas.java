@@ -7,6 +7,8 @@ package Nappula;
 
 public class Kuningas extends Nappula{
     
+    public boolean ekaSiirto;
+    
     public Kuningas(int x, int y, boolean vari) {
         super(x, y, vari);
         if (vari) {
@@ -14,6 +16,7 @@ public class Kuningas extends Nappula{
         } else {
             tyyppi = "k";
         }
+        ekaSiirto = true;
     }
     
     public Kuningas(boolean vari) {
@@ -23,6 +26,7 @@ public class Kuningas extends Nappula{
         } else {
             tyyppi = "k";
         }
+        ekaSiirto = true;
     }
 
 
@@ -31,11 +35,17 @@ public class Kuningas extends Nappula{
         if(siirtoLaudalla(alkuX, alkuY, kohdeX, kohdeY)==true) {
             if(alkuX != kohdeX || alkuY != kohdeY) {
                 if (Math.abs(kohdeX - alkuX) <= 1 && Math.abs(kohdeY - alkuY) <= 1) {
+                    ekaSiirto = false;
                     return true;
                 }
             }
         }
         return false;
+    }
+    
+    @Override
+    public boolean getEkaSiirto() {
+        return ekaSiirto;
     }
 
 }
